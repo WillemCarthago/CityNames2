@@ -107,7 +107,9 @@
                                "<b>local name: </b>" + (row.localname || "") + "<br>" +
                                "<b>description:</b><br>" +
                                (row.description || "") + "<br>" +
-                               (row.suffix || "");
+                               (row.suffix || "") + "<br>" +
+                               "id: " + (row.id || "")
+                               ;
                                    
             marker.bindPopup(popupContent);
             marker.options.suffix = row.suffix || ""; // store suffix for filtering
