@@ -1,0 +1,35 @@
+Got it 👍 — that error is a CORS (Cross-Origin Resource Sharing) problem. It’s not about your HTML being wrong, it’s about the browser refusing to load the CSV because the request looks “unsafe” when run from a local file. Let me break it down:
+
+🔹 Why this happens
+
+When you open your HTML directly from Finder (so the URL is like file:///.../index.html), the browser treats your origin as null.
+
+Then, when you try to fetch data from Google Sheets (https://docs.google.com/...), Chrome blocks it because Google’s server doesn’t send the required Access-Control-Allow-Origin header.
+
+This is standard browser security — it prevents random local files from requesting data from the internet.
+
+🔹 Ways to Fix It
+Option 1: Run a local web server (recommended)
+
+Instead of opening index.html directly, serve it.
+On Mac you can run a simple server:
+
+If you have Python 3:
+
+cd /path/to/your/project
+python3 -m http.server 8000
+
+
+Then open: http://localhost:8000/index.html
+
+If you have Node.js:
+
+npx http-server .
+
+
+Now your page will load from http://localhost:8000 (not file://), and CORS errors usually go away.
+
+
+python3 -m http.server 8000
+
+http://localhost:8000/
