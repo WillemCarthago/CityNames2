@@ -40,6 +40,8 @@
   <script src="js/leaflet.js"></script>
   <!-- MarkerCluster JS -->
   <script src="js/leaflet.markercluster.js"></script>
+  <!--FreezeMap-->
+  <script src="js/Leaflet.Freezy.bundle.js"></script>
 
   <!-- PapaParse JS -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
@@ -65,6 +67,9 @@
           }
         }
 
+    // Add freeze logic and control to the map
+    L.control.freezeMapControl().addTo(map);
+    
     // Add OpenStreetMap basemap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
