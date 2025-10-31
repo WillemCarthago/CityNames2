@@ -28,6 +28,14 @@
       color: #555;
       line-height: 1.4;
     }
+    #coords {
+      margin-top: 5px;
+      font-size: 14px;    
+    }
+    #coords input {
+      margin-right: 10px;
+      padding: 2px 4px;
+    }
   </style>
 </head>
 <body>
@@ -49,6 +57,12 @@
     </div>
 
   <div id="map"></div>
+
+  <div id="coords">
+    Latitude: <input type="text" id="latField" readonly style="width: 120px;">
+    Longitude: <input type="text" id="lonField" readonly style="width: 120px;">
+  </div>
+
 
 
   <!-- Leaflet JS -->
@@ -153,6 +167,13 @@
         }
       });
     }
+
+    // Optional: show lat/lon when hovering the mouse over the map
+    map.on('mousemove', function(e) {
+      document.getElementById('latField').value = e.latlng.lat.toFixed(6);
+      document.getElementById('lonField').value = e.latlng.lng.toFixed(6);
+    });
+
 
     // Example usage:
     // filterMarkers("A"); // show only markers with suffix "A"
